@@ -1,0 +1,17 @@
+# @param {String} s
+# @param {String} t
+# @return {Character}
+def find_the_difference(s, t)
+  a = t.split('')
+  b = s.split('')
+  chars1 = Hash.new(0)
+  chars2 = Hash.new(0)
+  a.each { |name| chars1[name] += 1 }
+  b.each { |name| chars2[name] += 1 }
+  return (chars1.keys - chars2.keys).first if (chars1.keys - chars2.keys).any?
+  chars1.each do |k,v|
+    if chars2[k] != v
+      return k
+    end
+  end
+end
